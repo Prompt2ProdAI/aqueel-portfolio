@@ -1,5 +1,5 @@
 /**
- * Core TypeScript interfaces for Mohammad Aqueel's AI/ML Portfolio
+ * Core TypeScript interfaces for Mohammed Aqueel's AI/ML Portfolio
  */
 
 export interface WorkExperience {
