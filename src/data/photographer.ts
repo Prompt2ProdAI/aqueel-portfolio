@@ -19,8 +19,8 @@ export const photographerInfo: ProfileInfo = {
     cgpa: '7.2 CGPA'
   },
   socialLinks: {
-    linkedin: 'https://linkedin.com/in/mohammad-aqueel',
-    github: 'https://github.com/mohammad-aqueel'
+    linkedin: 'https://www.linkedin.com/in/mohd-aqueel/',
+    github: 'https://github.com/XLR8MDA'
   },
   portraitImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjB8&ixlib=rb-4.1.0&q=80&w=1080'
 };
