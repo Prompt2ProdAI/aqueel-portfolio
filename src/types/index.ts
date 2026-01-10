@@ -45,47 +45,51 @@ export interface ProfileInfo {
     behance?: string;
   };
   portraitImage: string;
-  // Legacy fields for compatibility
-  biography?: string;
-  availability?: string;
-  phone?: string;
 }
 
 export interface ContactSubmission {
   name: string;
   email: string;
-  projectType: 'voice-ai' | 'chatbot' | 'ml-pipeline' | 'consultation';
+  projectType: 'voice-ai' | 'chatbot' | 'ml-pipeline' | 'consultation' | 'other';
   message: string;
   timestamp: Date;
 }
 
-// Keep legacy types for compatibility
-export type ProjectCategory = 'voice-ai' | 'chatbot' | 'ml-pipeline' | 'api' | 'portraits' | 'landscapes' | 'editorial' | 'architecture' | 'documentary';
+export type ProjectCategory = 'voice-ai' | 'agents' | 'rag' | 'computer-vision' | 'nlp' | 'mlops';
 
-export type AspectRatio = 'portrait' | 'landscape' | 'square';
-
-export interface ProjectImage {
-  id: string;
-  src: string;
-  alt: string;
-  aspectRatio: AspectRatio;
-  caption?: string;
+export interface ProjectLink {
+  type: 'github' | 'demo' | 'paper' | 'article';
+  url: string;
+  label: string;
 }
 
 export interface Project {
   id: string;
-  title: string;
-  category: ProjectCategory;
-  year: string;
-  coverImage: string;
-  images: ProjectImage[];
-  description: string;
-  client?: string;
-  camera?: string;
-  tech?: string[];
-  location?: string;
   slug: string;
+  title: string;
+  shortDescription: string;
+  fullDescription: string;
+  category: ProjectCategory;
+  technologies: string[];
+  impact?: string; // e.g., "Reduced latency by 40%"
+  challenges?: string[];
+  links: ProjectLink[];
+  featured?: boolean;
+  coverImage?: string; // Optional illustration/diagram
+  date?: string;
 }
 
-// Legacy type alias
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string; // Markdown supported
+  date: string;
+  readTime: string;
+  tags: string[];
+  coverImage?: string;
+}
+
+// Legacy type alias for compatibility during refactor
 export type PhotographerInfo = ProfileInfo;

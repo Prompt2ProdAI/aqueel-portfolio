@@ -17,6 +17,10 @@ const Index = lazy(() => import("./pages/Home"));
 const Experience = lazy(() => import("./pages/Experience"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
+// Replaced Portfolio with Projects
+const Projects = lazy(() => import("./pages/Projects"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const Blog = lazy(() => import("./pages/Blog")); // New Blog Page
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -59,6 +63,37 @@ function AnimatedRoutes() {
             </PageTransition>
           }
         />
+        {/* Updated Route: Projects */}
+        <Route
+          path="/projects"
+          element={
+            <PageTransition>
+              <Projects />
+            </PageTransition>
+          }
+        />
+        {/* Legacy redirect for old links if needed, or just remove */}
+        <Route path="/portfolio" element={<Projects />} />
+
+        <Route
+          path="/project/:slug"
+          element={
+            <PageTransition>
+              <ProjectDetail />
+            </PageTransition>
+          }
+        />
+
+        {/* New Route: Blog */}
+        <Route
+          path="/blog"
+          element={
+            <PageTransition>
+              <Blog />
+            </PageTransition>
+          }
+        />
+
         <Route
           path="*"
           element={

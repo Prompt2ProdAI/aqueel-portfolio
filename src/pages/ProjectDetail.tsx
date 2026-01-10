@@ -1,159 +1,159 @@
-import { useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Camera, User } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Github, Calendar, Layers, Cpu, Award } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { SEOHead } from '@/components/seo/SEOHead';
-import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { getProjectBySlug } from '@/data/projects';
-import { ImageWithLightbox } from '@/components/portfolio/ImageWithLightbox';
-import { Lightbox } from '@/components/portfolio/Lightbox';
 
 /**
- * Project detail page with hero image, gallery, and full-screen lightbox
- * Features smooth animations and immersive image viewing experience
+ * Engineering Project Detail Page
+ * Focuses on Problem, Solution, Architecture, and Impact.
  */
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
-
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // 404 if project not found
   if (!project) {
     return <Navigate to="/404" replace />;
   }
 
-  const openLightbox = (index: number) => {
-    setCurrentImageIndex(index);
-    setLightboxOpen(true);
-  };
-
-  const closeLightbox = () => {
-    setLightboxOpen(false);
-  };
-
   return (
     <>
       <SEOHead
         title={project.title}
-        description={project.description}
-        image={project.coverImage}
+        description={project.shortDescription}
         type="article"
       />
-      
-      <div className="min-h-screen">
-        {/* Hero Image - 70vh */}
-      <motion.div
-        className="relative w-full h-[70vh] overflow-hidden bg-muted"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <img
-          src={project.coverImage}
-          alt={project.title}
-          className="w-full h-full object-cover"
-          loading="eager"
-          fetchPriority="high"
-        />
-        {/* Gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-      </motion.div>
 
-      {/* Project Info Section */}
-      <section className="max-w-4xl mx-auto px-6 lg:px-8 py-12 md:py-16">
-        <motion.div
-          className="space-y-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          {/* Title and Category */}
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wide">
-              {project.title}
-            </h1>
-            <div className="flex flex-wrap gap-6 text-sm text-muted-foreground font-light">
-              <div className="flex items-center gap-2">
-                <Calendar className="size-4" />
-                <span>{project.year}</span>
+      <div className="min-h-screen py-24 px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto space-y-12">
+
+          {/* Back Link */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ArrowLeft className="size-4" />
+              Back to Projects
+            </Link>
+          </motion.div>
+
+          {/* Header Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="space-y-6"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center gap-3">
+                <Badge variant="outline" className="capitalize">
+                  {project.category.replace('-', ' ')}
+                </Badge>
+                {project.date && (
+                  <span className="text-sm text-muted-foreground flex items-center gap-1">
+                    <Calendar className="size-3.5" /> {project.date}
+                  </span>
+                )}
               </div>
-              <div className="flex items-center gap-2 capitalize">
-                <span>•</span>
-                <span>{project.category}</span>
-              </div>
-              {project.location && (
-                <>
-                  <span>•</span>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="size-4" />
-                    <span>{project.location}</span>
-                  </div>
-                </>
-              )}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-balance">
+                {project.title}
+              </h1>
+              <p className="text-xl text-muted-foreground font-light max-w-2xl text-balance">
+                {project.shortDescription}
+              </p>
             </div>
-          </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              {project.links.map((link) => (
+                <Button key={link.url} asChild size="lg" variant={link.type === 'github' ? 'outline' : 'default'}>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" className="gap-2">
+                    {link.type === 'github' ? <Github className="size-5" /> : <ExternalLink className="size-5" />}
+                    {link.label}
+                  </a>
+                </Button>
+              ))}
+            </div>
+          </motion.div>
 
           <Separator />
 
-          {/* Description */}
-          <div className="space-y-4">
-            <p className="text-lg md:text-xl font-light leading-relaxed text-foreground">
-              {project.description}
-            </p>
-          </div>
+          {/* Main Content Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 
-          {/* Technical Details */}
-          <div className="grid md:grid-cols-2 gap-6 pt-4">
-            {project.camera && (
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm font-light tracking-wide uppercase text-muted-foreground">
-                  <Camera className="size-4" />
-                  <span>Camera</span>
+            {/* Left Column: Context & Tech */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="space-y-8 md:col-span-1"
+            >
+              {/* Impact Highlight */}
+              {project.impact && (
+                <div className="p-6 bg-primary/5 border border-primary/20 rounded-lg space-y-2">
+                  <div className="flex items-center gap-2 text-primary font-medium">
+                    <Award className="size-5" />
+                    Key Impact
+                  </div>
+                  <p className="text-lg font-semibold tracking-tight">
+                    {project.impact}
+                  </p>
                 </div>
-                <p className="font-light text-foreground">{project.camera}</p>
-              </div>
-            )}
-            {project.client && (
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm font-light tracking-wide uppercase text-muted-foreground">
-                  <User className="size-4" />
-                  <span>Client</span>
+              )}
+
+              {/* Technologies */}
+              <div className="space-y-4">
+                <h3 className="text-sm font-medium uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                  <Cpu className="size-4" /> Tech Stack
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <Badge key={tech} variant="secondary">
+                      {tech}
+                    </Badge>
+                  ))}
                 </div>
-                <p className="font-light text-foreground">{project.client}</p>
               </div>
-            )}
-          </div>
-        </motion.div>
-      </section>
 
-        {/* Image Gallery - Edge to edge */}
-        <section className="py-12 md:py-16">
-          <div className="space-y-8 md:space-y-12">
-            {project.images.map((image, index) => (
-              <ScrollReveal key={image.id} delay={index * 0.1}>
-                <ImageWithLightbox
-                  image={image}
-                  onClick={() => openLightbox(index)}
-                  priority={index === 0}
-                  index={0}
-                  className="w-full"
-                />
-              </ScrollReveal>
-            ))}
-          </div>
-        </section>
+              {/* Challenges (if any) */}
+              {project.challenges && project.challenges.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                    <Layers className="size-4" /> Challenges
+                  </h3>
+                  <ul className="list-disc list-outside ml-4 space-y-2 text-sm text-muted-foreground">
+                    {project.challenges.map((challenge, i) => (
+                      <li key={i}>{challenge}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </motion.div>
 
-        {/* Lightbox */}
-        <Lightbox
-          images={project.images}
-          currentIndex={currentImageIndex}
-          isOpen={lightboxOpen}
-          onClose={closeLightbox}
-          onNavigate={setCurrentImageIndex}
-        />
+            {/* Right Column: Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="md:col-span-2 space-y-8"
+            >
+              <div className="prose prose-zinc dark:prose-invert max-w-none">
+                <h3 className="text-2xl font-light tracking-wide mb-4">Project Overview</h3>
+                <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {project.fullDescription}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </>
   );

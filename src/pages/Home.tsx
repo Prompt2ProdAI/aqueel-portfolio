@@ -4,8 +4,11 @@ import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { ArrowRight, Code2, Mic, Bot, Database } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { skills } from '@/data/experience';
+import { getFeaturedProjects } from '@/data/projects';
+import { ProjectCard } from '@/components/portfolio/ProjectCard';
 import { Badge } from '@/components/ui/badge';
 
 /**
@@ -38,7 +41,7 @@ export default function Home() {
   return (
     <>
       <SEOHead />
-      
+
       <div className="min-h-screen">
         {/* Hero Section - Full viewport */}
         <section className="relative h-screen w-full overflow-hidden">
@@ -60,9 +63,9 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2 }}
               >
-                {photographerInfo.name.toUpperCase()}
+                {photographerInfo.name}
               </motion.h1>
-              
+
               <motion.p
                 className="text-xl md:text-2xl font-light tracking-wide text-primary"
                 initial={{ opacity: 0, y: 20 }}
@@ -115,6 +118,7 @@ export default function Home() {
           </div>
         </section>
 
+
         {/* Highlights Section */}
         <section className="py-24 md:py-32 px-6 lg:px-8 bg-muted/30">
           <div className="max-w-6xl mx-auto">
@@ -134,6 +138,41 @@ export default function Home() {
                       {item.description}
                     </p>
                   </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Projects Section */}
+        <section className="py-24 md:py-32 px-6 lg:px-8 bg-background border-t border-border">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+              <ScrollReveal>
+                <div className="space-y-4">
+                  <h2 className="text-3xl md:text-4xl font-light tracking-wide">
+                    Featured Projects
+                  </h2>
+                  <p className="text-lg text-muted-foreground font-light max-w-xl">
+                    Selected work demonstrating scalable AI systems and product engineering.
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.2}>
+                <Button variant="outline" asChild className="group">
+                  <Link to="/projects">
+                    View All Projects
+                    <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </ScrollReveal>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {getFeaturedProjects().map((project, index) => (
+                <ScrollReveal key={project.id} delay={index * 0.1}>
+                  <ProjectCard project={project} index={index} />
                 </ScrollReveal>
               ))}
             </div>
@@ -173,7 +212,7 @@ export default function Home() {
                 Technical Stack
               </h2>
               <p className="text-lg text-muted-foreground font-light tracking-wide">
-                Technologies I work with daily
+                Technologies that I use
               </p>
             </div>
           </ScrollReveal>
