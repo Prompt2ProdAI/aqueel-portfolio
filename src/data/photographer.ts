@@ -11,7 +11,6 @@ export const photographerInfo: ProfileInfo = {
     uae: '+971 58 683 7536',
     india: '+91 9949700944'
   },
-  visaStatus: 'Self-Sponsored Visa (NOC Work Permit)',
   education: {
     degree: 'B.Tech',
     institution: 'JNTUH College of Engineering, Hyderabad',
@@ -21,6 +20,12 @@ export const photographerInfo: ProfileInfo = {
   socialLinks: {
     linkedin: 'https://www.linkedin.com/in/mohd-aqueel',
     github: 'https://github.com/XLR8MDA'
+  },
+  multilingualNames: {
+    arabic: 'محمد عقیل',
+    hindi: 'मोहम्मद अकील',
+    malayalam: 'മുഹമ്മദ് അഖീൽ',
+    telugu: 'మహ్మద్ అకీల్'
   },
   portraitImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjB8&ixlib=rb-4.1.0&q=80&w=1080'
 };

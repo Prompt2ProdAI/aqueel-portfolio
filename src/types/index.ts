@@ -31,7 +31,7 @@ export interface ProfileInfo {
     uae: string;
     india: string;
   };
-  visaStatus: string;
+  visaStatus?: string;
   education: {
     degree: string;
     institution: string;
@@ -43,6 +43,12 @@ export interface ProfileInfo {
     github?: string;
     instagram?: string;
     behance?: string;
+  };
+  multilingualNames?: {
+    arabic: string;
+    hindi: string;
+    malayalam: string;
+    telugu: string;
   };
   portraitImage: string;
 }

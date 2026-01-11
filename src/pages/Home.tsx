@@ -66,6 +66,21 @@ export default function Home() {
                 {photographerInfo.name}
               </motion.h1>
 
+              {/* Multilingual Names */}
+              {photographerInfo.multilingualNames && (
+                <motion.div
+                  className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-muted-foreground/60 font-light"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.3 }}
+                >
+                  <span className="text-lg md:text-xl" dir="rtl">{photographerInfo.multilingualNames.arabic}</span>
+                  <span className="text-lg md:text-xl">{photographerInfo.multilingualNames.hindi}</span>
+                  <span className="text-lg md:text-xl">{photographerInfo.multilingualNames.malayalam}</span>
+                  <span className="text-lg md:text-xl">{photographerInfo.multilingualNames.telugu}</span>
+                </motion.div>
+              )}
+
               <motion.p
                 className="text-xl md:text-2xl font-light tracking-wide text-primary"
                 initial={{ opacity: 0, y: 20 }}
