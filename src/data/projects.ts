@@ -57,6 +57,26 @@ export const projects: Project[] = [
     impact: '40% time saved',
     links: [],
     featured: false
+  },
+  {
+    id: '5',
+    slug: 'gitivity-github-tracker',
+    title: 'Gitivity - GitHub Productivity Tracker',
+    shortDescription: 'VS Code extension for automated work logging and AI-powered summaries.',
+    fullDescription: 'Gitivity is a sophisticated VS Code extension designed to streamline developer productivity by automatically monitoring and logging file system activities. It generates human-readable work logs of modifications, creations, and deletions. Integrated with the Groq API, it provides concise AI-powered summaries of development progress. Additionally, it enables seamless creation of private GitHub repositories directly from the IDE.',
+    category: 'nlp',
+    technologies: ['TypeScript', 'VS Code API', 'Groq AI', 'Node.js', 'GitHub API'],
+    impact: '48+ Installs on VS Code Marketplace',
+    links: [
+      { type: 'github', url: 'https://github.com/aqueel-softsensor/Gitvity-Extension', label: 'View Code' },
+      { type: 'demo', url: 'https://marketplace.visualstudio.com/items?itemName=SmallUpAI.gitivity', label: 'Marketplace' }
+    ],
+    challenges: [
+      'Implementing efficient real-time monitoring of workspace file events',
+      'Orchestrating AI summarization workflows while maintaining IDE performance',
+      'Securely managing API keys and GitHub authentication within VS Code'
+    ],
+    featured: true
   }
 ];
 
