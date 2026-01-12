@@ -1,0 +1,7 @@
+{
+    "name": "self-portfolio",
+    "compatibility_date": "2025-01-12",
+    "assets": {
+        "directory": "./dist"
+    }
+}
