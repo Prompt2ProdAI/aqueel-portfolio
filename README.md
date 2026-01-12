@@ -1,78 +1,58 @@
-# Welcome to your Lovable project
+# Portfolio Project
 
-## Project info
+This is a personal portfolio website built with React, Vite, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/6fd12b81-631e-49d3-83b3-86e8b3fab3ae
-**Deployed URL**: https://new-beginning-glee.lovable.app
+## Getting Started
 
-## How can I edit this code?
+### Prerequisites
 
-There are several ways of editing your application.
+- Node.js & npm (or bun) installed.
 
-**Use Lovable**
+### Installation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6fd12b81-631e-49d3-83b3-86e8b3fab3ae) and start prompting.
+1. Clone the repository:
+   ```sh
+   git clone <YOUR_GIT_URL>
+   cd self-portfolio
+   ```
 
-Changes made via Lovable will be committed automatically to this repo.
+2. Install dependencies:
+   ```sh
+   npm install
+   # or
+   bun install
+   ```
 
-**Use your preferred IDE**
+3. Start the development server:
+   ```sh
+   npm run dev
+   # or
+   bun dev
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Deployment on Cloudflare Pages
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+This project is configured for deployment on Cloudflare Pages.
 
-Follow these steps:
+### Automatic Deployment (Recommended)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com/).
+2. Go to **Workers & Pages** > **Create Application** > **Pages** > **Connect to Git**.
+3. Select your repository.
+4. Configure the build settings:
+   - **Framework Preset**: Vite
+   - **Build command**: `npm run build` (or `bun run build`)
+   - **Build output directory**: `dist`
+5. Click **Save and Deploy**.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Routing
 
-# Step 3: Install the necessary dependencies.
-npm i
+A `public/_redirects` file is included to handle client-side routing in Cloudflare Pages.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+## Tech Stack
 
 - Vite
 - TypeScript
 - React
 - shadcn-ui
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/6fd12b81-631e-49d3-83b3-86e8b3fab3ae) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
-
-# ./tailwind-plus folder:
-
-The tailwind-plus folder contains tailwind components and themes to be used as inspiration for the project. DO NOT REMOVE THE FOLDER UNLESS SPECIFICALLY TOLD TO DO SO
