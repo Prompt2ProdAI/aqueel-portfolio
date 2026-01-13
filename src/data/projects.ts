@@ -77,6 +77,26 @@ export const projects: Project[] = [
       'Securely managing API keys and GitHub authentication within VS Code'
     ],
     featured: true
+  },
+  {
+    id: '6',
+    slug: 'mindmap-ai',
+    title: 'Mindmap AI - Intelligent Knowledge Visualizer',
+    shortDescription: 'AI-powered tool transforming complex queries into interactive, hierarchical mindmaps.',
+    fullDescription: 'Engineered a full-stack application that leverages the Groq API to transform unstructured user queries into structured Markdown, which is then dynamically rendered into interactive mindmaps using Markmap.js. The system features a high-performance FastAPI backend for real-time processing and a responsive React frontend for seamless visualization.',
+    category: 'nlp',
+    technologies: ['FastAPI', 'React', 'Groq API', 'Markmap.js', 'TailwindCSS', 'TypeScript'],
+    impact: 'Real-time knowledge visualization',
+    links: [
+      { type: 'github', url: 'https://github.com/XLR8MDA/mindmap-frontend', label: 'Frontend' },
+      { type: 'github', url: 'https://github.com/XLR8MDA/mindmap-backend', label: 'Backend' }
+    ],
+    challenges: [
+      'Optimizing AI prompts for consistent hierarchical Markdown output',
+      'Implementing real-time rendering of large, complex mindmap structures',
+      'Ensuring cross-platform responsiveness for interactive SVG-based visualizations'
+    ],
+    featured: true
   }
 ];
 
