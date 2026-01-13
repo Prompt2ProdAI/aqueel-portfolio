@@ -3,8 +3,8 @@ import type { WorkExperience, Skill } from '@/types';
 export const workExperience: WorkExperience[] = [
   {
     id: 'freelance',
-    company: 'Freelance',
-    role: 'AI/ML Engineer (Contract)',
+    company: 'Rezolve.ai',
+    role: 'AI/ML Engineer (Full Time)',
     location: 'Remote',
     period: 'September 2025 - Present',
     projects: [

@@ -44,77 +44,112 @@ export default function Home() {
 
       <div className="min-h-screen">
         {/* Hero Section - Full viewport */}
-        <section className="relative h-screen w-full overflow-hidden">
-          {/* Background with gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/10" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+        <section className="relative h-screen w-full overflow-hidden bg-background">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <motion.div
+              animate={{
+                scale: [1, 1.2, 1],
+                rotate: [0, 90, 0],
+                x: [0, 100, 0],
+                y: [0, 50, 0]
+              }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px]"
+            />
+            <motion.div
+              animate={{
+                scale: [1, 1.3, 1],
+                rotate: [0, -120, 0],
+                x: [0, -150, 0],
+                y: [0, 80, 0]
+              }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              className="absolute top-[20%] -right-[5%] w-[35%] h-[35%] bg-accent/20 rounded-full blur-[120px]"
+            />
+            <motion.div
+              animate={{
+                scale: [1, 1.1, 1],
+                x: [0, 50, 0],
+                y: [0, -100, 0]
+              }}
+              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+              className="absolute -bottom-[10%] left-[20%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-[100px]"
+            />
+          </div>
+
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_transparent_0%,_var(--background)_100%)] opacity-70" />
 
           {/* Hero Content */}
-          <div className="relative h-full flex flex-col items-center justify-center px-6">
+          <div className="relative h-full flex flex-col items-center justify-center px-6 pt-20 pb-20">
             <motion.div
-              className="text-center space-y-6 max-w-4xl"
+              className="text-center space-y-8 max-w-5xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <motion.h1
-                className="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-wide text-foreground"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.2 }}
-              >
-                {photographerInfo.name}
-              </motion.h1>
-
-              {/* Multilingual Names */}
-              {photographerInfo.multilingualNames && (
-                <motion.div
-                  className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-muted-foreground/60 font-light"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.3 }}
+              <div className="space-y-4">
+                <motion.h1
+                  className="text-6xl md:text-8xl lg:text-8xl font-extralight tracking-tight text-gradient leading-none pb-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.2 }}
                 >
-                  <span className="text-lg md:text-xl" dir="rtl">{photographerInfo.multilingualNames.arabic}</span>
-                  <span className="text-lg md:text-xl">{photographerInfo.multilingualNames.hindi}</span>
-                  <span className="text-lg md:text-xl">{photographerInfo.multilingualNames.malayalam}</span>
-                  <span className="text-lg md:text-xl">{photographerInfo.multilingualNames.telugu}</span>
-                </motion.div>
-              )}
+                  {photographerInfo.name}
+                </motion.h1>
 
-              <motion.p
-                className="text-xl md:text-2xl font-light tracking-wide text-primary"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.4 }}
-              >
-                {photographerInfo.tagline}
-              </motion.p>
+                {/* Multilingual Names */}
+                {photographerInfo.multilingualNames && (
+                  <motion.div
+                    className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-muted-foreground/40 font-light tracking-[0.2em]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                  >
+                    <span className="text-xl md:text-2xl pt-1" dir="rtl">{photographerInfo.multilingualNames.arabic}</span>
+                    <span className="text-xl md:text-2xl">{photographerInfo.multilingualNames.hindi}</span>
+                    <span className="text-xl md:text-2xl">{photographerInfo.multilingualNames.malayalam}</span>
+                    <span className="text-xl md:text-2xl">{photographerInfo.multilingualNames.telugu}</span>
+                  </motion.div>
+                )}
+              </div>
 
-              <motion.p
-                className="text-base md:text-lg font-light leading-relaxed text-muted-foreground max-w-2xl mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.6 }}
-              >
-                {photographerInfo.heroIntroduction}
-              </motion.p>
+              <div className="space-y-6">
+                <motion.p
+                  className="text-xl md:text-3xl font-light tracking-[0.1em] text-foreground/80 uppercase"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                >
+                  {photographerInfo.tagline}
+                </motion.p>
+
+                <motion.p
+                  className="text-lg md:text-xl font-light leading-relaxed text-muted-foreground max-w-3xl mx-auto balance"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.7 }}
+                >
+                  {photographerInfo.heroIntroduction}
+                </motion.p>
+              </div>
 
               <motion.div
-                className="flex flex-wrap justify-center gap-4 pt-4"
+                className="flex flex-wrap justify-center gap-6 pt-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.8 }}
+                transition={{ duration: 1, delay: 0.9 }}
               >
                 <Link
-                  to="/experience"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-sm font-light tracking-wide hover:bg-primary/90 transition-colors"
+                  to="/projects"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-light tracking-wide transition-all hover:scale-105 glow-primary"
                 >
-                  View Experience
-                  <ArrowRight className="size-4" />
+                  View My Work
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-sm font-light tracking-wide hover:bg-accent transition-colors"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-background/50 border border-border/50 backdrop-blur-md rounded-full font-light tracking-wide hover:bg-background transition-all"
                 >
                   Get in Touch
                 </Link>
@@ -123,10 +158,10 @@ export default function Home() {
 
             {/* Scroll Indicator */}
             <motion.div
-              className="absolute bottom-12"
+              className="absolute bottom-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
+              transition={{ delay: 1.5, duration: 0.8 }}
             >
               <ScrollIndicator />
             </motion.div>
@@ -146,10 +181,12 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {highlights.map((item, index) => (
                 <ScrollReveal key={item.title} delay={index * 0.1}>
-                  <div className="p-6 rounded-lg border border-border bg-background h-full">
-                    <item.icon className="size-8 text-primary mb-4" />
-                    <h3 className="text-lg font-medium mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground font-light">
+                  <div className="glass-card p-8 rounded-2xl group hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 h-full">
+                    <div className="size-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                      <item.icon className="size-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-medium mb-3 tracking-tight">{item.title}</h3>
+                    <p className="text-muted-foreground font-light leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -202,7 +239,7 @@ export default function Home() {
                 <h2 className="text-3xl md:text-4xl font-light tracking-wide">
                   About Me
                 </h2>
-                <div className="space-y-4 text-lg font-light leading-relaxed text-muted-foreground">
+                <div className="space-y-4 text-lg font-light leading-relaxed text-muted-foreground text-justify balance">
                   <p>
                     {photographerInfo.summary}
                   </p>
@@ -232,14 +269,14 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <div className="max-w-4xl mx-auto px-6">
+          <div className="max-w-5xl mx-auto px-6">
             <ScrollReveal delay={0.2}>
-              <div className="flex flex-wrap justify-center gap-3">
-                {skills.flatMap(group => group.items).slice(0, 20).map((skill) => (
+              <div className="flex flex-wrap justify-center gap-4">
+                {skills.flatMap(group => group.items).slice(0, 24).map((skill) => (
                   <Badge
                     key={skill}
                     variant="outline"
-                    className="px-4 py-2 text-sm font-light"
+                    className="px-6 py-2.5 text-sm font-light border-border/50 bg-background/50 backdrop-blur-sm rounded-full hover:border-primary/50 hover:bg-primary/5 transition-all cursor-default"
                   >
                     {skill}
                   </Badge>

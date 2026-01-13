@@ -102,7 +102,7 @@ export default function About() {
 
                 {/* Summary */}
                 <div className="space-y-4">
-                  <p className="text-base md:text-lg font-light leading-relaxed text-muted-foreground">
+                  <p className="text-base md:text-lg font-light leading-relaxed text-muted-foreground text-justify balance">
                     {photographerInfo.summary}
                   </p>
                 </div>

@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { name: 'Home', path: '/' },
-  { name: 'Technical Insights', path: '/blog' },     // Renamed from Notes
+  { name: 'Insights', path: '/blog' },     // Renamed from Notes
   { name: 'Projects', path: '/projects' },
   { name: 'Experience', path: '/experience' },
   { name: 'About', path: '/about' },
@@ -54,18 +54,7 @@ export function Header() {
                 : 'text-foreground hover:text-foreground/80'
             )}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative size-8 overflow-hidden rounded-full border border-border/50"
-            >
-              <img
-                src="/logo.jpg"
-                alt="Logo"
-                className="size-full object-cover"
-              />
-            </motion.div>
+
             <motion.span
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
