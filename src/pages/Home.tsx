@@ -1,8 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { photographerInfo } from '@/data/photographer';
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SEOHead } from '@/components/seo/SEOHead';
+import { useRef } from 'react';
 import { ArrowRight, Code2, Mic, Bot, Database } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -10,11 +11,23 @@ import { skills } from '@/data/experience';
 import { getFeaturedProjects } from '@/data/projects';
 import { ProjectCard } from '@/components/portfolio/ProjectCard';
 import { Badge } from '@/components/ui/badge';
+import { LiquidFlow } from '@/components/ui/liquid-flow';
 
 /**
  * Homepage with immersive hero section showcasing AI/ML expertise
  */
 export default function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollXProgress } = useScroll({
+    container: containerRef,
+  });
+
+  const scaleX = useSpring(scrollXProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   const highlights = [
     {
       icon: Mic,
@@ -45,38 +58,8 @@ export default function Home() {
       <div className="min-h-screen">
         {/* Hero Section - Full viewport */}
         <section className="relative h-screen w-full overflow-hidden bg-background">
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                rotate: [0, 90, 0],
-                x: [0, 100, 0],
-                y: [0, 50, 0]
-              }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px]"
-            />
-            <motion.div
-              animate={{
-                scale: [1, 1.3, 1],
-                rotate: [0, -120, 0],
-                x: [0, -150, 0],
-                y: [0, 80, 0]
-              }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute top-[20%] -right-[5%] w-[35%] h-[35%] bg-accent/20 rounded-full blur-[120px]"
-            />
-            <motion.div
-              animate={{
-                scale: [1, 1.1, 1],
-                x: [0, 50, 0],
-                y: [0, -100, 0]
-              }}
-              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-[10%] left-[20%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-[100px]"
-            />
-          </div>
+          {/* Organic Liquid Flow Background */}
+          <LiquidFlow className="opacity-80" />
 
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_transparent_0%,_var(--background)_100%)] opacity-70" />
 
@@ -85,8 +68,14 @@ export default function Home() {
             <motion.div
               className="text-center space-y-8 max-w-5xl"
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              animate={{
+                opacity: 1,
+                y: [0, -15, 0]
+              }}
+              transition={{
+                opacity: { duration: 1, ease: "easeOut" },
+                y: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+              }}
             >
               <div className="space-y-4">
                 <motion.h1
@@ -127,8 +116,14 @@ export default function Home() {
                 <motion.p
                   className="text-lg md:text-xl font-light leading-relaxed text-muted-foreground max-w-3xl mx-auto balance"
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.7 }}
+                  animate={{
+                    opacity: 1,
+                    y: [0, -10, 0],
+                  }}
+                  transition={{
+                    opacity: { duration: 1, delay: 0.7 },
+                    y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                  }}
                 >
                   {photographerInfo.heroIntroduction}
                 </motion.p>
@@ -221,12 +216,39 @@ export default function Home() {
               </ScrollReveal>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {getFeaturedProjects().map((project, index) => (
-                <ScrollReveal key={project.id} delay={index * 0.1}>
-                  <ProjectCard project={project} index={index} />
-                </ScrollReveal>
-              ))}
+            {/* Horizontal Scroll Area */}
+            <div className="relative -mx-6 lg:-mx-8 group">
+              <div
+                ref={containerRef}
+                className="flex gap-4 md:gap-6 overflow-x-auto pb-8 pt-4 px-6 lg:px-8 hide-scrollbar snap-x snap-mandatory scroll-smooth"
+              >
+                {getFeaturedProjects().map((project, index) => (
+                  <ScrollReveal
+                    key={project.id}
+                    delay={index * 0.1}
+                    className="flex-shrink-0 w-[80vw] md:w-[420px] snap-center"
+                  >
+                    <ProjectCard project={project} index={index} />
+                  </ScrollReveal>
+                ))}
+              </div>
+
+              {/* Scroll Progress Bar */}
+              <div className="max-w-xs mx-auto px-6 mt-2 pb-4">
+                <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden relative">
+                  <motion.div
+                    className="absolute inset-y-0 left-0 bg-primary/80 rounded-full"
+                    style={{
+                      width: "100%",
+                      scaleX,
+                      transformOrigin: "left",
+                    }}
+                  />
+                </div>
+                <p className="text-[9px] text-center mt-2 text-muted-foreground/40 uppercase tracking-[0.2em] font-medium">
+                  Project Gallery
+                </p>
+              </div>
             </div>
           </div>
         </section>

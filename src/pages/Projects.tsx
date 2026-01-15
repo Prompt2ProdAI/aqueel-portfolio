@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects, getProjectsByCategory } from '@/data/projects';
-import { ProjectCard } from '@/components/portfolio/ProjectCard'; // Make sure this path is correct
+import { ProjectCard } from '@/components/portfolio/ProjectCard';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { Button } from '@/components/ui/button';
 import type { ProjectCategory } from '@/types';
@@ -28,7 +28,7 @@ export default function Projects() {
                 description="Showcase of AI/ML engineering projects including Voice AI, RAG systems, and autonomous agents."
             />
 
-            <div className="min-h-screen py-24 px-6 lg:px-8 max-w-7xl mx-auto">
+            <div className="min-h-screen py-24 px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
                 {/* Header */}
                 <div className="space-y-6 mb-16 text-center max-w-3xl mx-auto">
                     <motion.h1
@@ -80,7 +80,7 @@ export default function Projects() {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.3, delay: index * 0.05 }}
                             >
                                 <ProjectCard project={project} index={index} />
                             </motion.div>

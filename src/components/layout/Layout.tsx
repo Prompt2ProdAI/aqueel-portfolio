@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { BackgroundBeams } from '@/components/ui/background-beams';
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,16 +18,22 @@ export function Layout({ children }: LayoutProps) {
   const isHomepage = location.pathname === '/';
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main 
-        id="main-content" 
-        className={`flex-1 ${isHomepage ? '' : 'pt-16'}`}
-        tabIndex={-1}
-      >
-        {children}
-      </main>
-      <Footer />
+    <div className="relative min-h-screen flex flex-col bg-background overflow-x-hidden">
+      {/* Background Animation */}
+      <BackgroundBeams />
+
+      {/* Content Layer */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Header />
+        <main
+          id="main-content"
+          className={`flex-1 ${isHomepage ? '' : 'pt-16'}`}
+          tabIndex={-1}
+        >
+          {children}
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
