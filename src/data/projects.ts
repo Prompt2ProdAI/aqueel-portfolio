@@ -89,7 +89,8 @@ export const projects: Project[] = [
     impact: 'Real-time knowledge visualization',
     links: [
       { type: 'github', url: 'https://github.com/XLR8MDA/mindmap-frontend', label: 'Frontend' },
-      { type: 'github', url: 'https://github.com/XLR8MDA/mindmap-backend', label: 'Backend' }
+      { type: 'github', url: 'https://github.com/XLR8MDA/mindmap-backend', label: 'Backend' },
+      { type: 'demo', url: 'https://mindmap-fe-v2.xlr8090.workers.dev/', label: 'Live Demo' }
     ],
     challenges: [
       'Optimizing AI prompts for consistent hierarchical Markdown output',
