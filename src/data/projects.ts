@@ -2,6 +2,27 @@ import type { Project } from '@/types';
 
 export const projects: Project[] = [
   {
+    id: '6',
+    slug: 'mindmap-ai',
+    title: 'Mindmap AI - Intelligent Knowledge Visualizer',
+    shortDescription: 'AI-powered tool transforming complex queries into interactive, hierarchical mindmaps.',
+    fullDescription: 'Engineered a full-stack application that leverages the Groq API to transform unstructured user queries into structured Markdown, which is then dynamically rendered into interactive mindmaps using Markmap.js. The system features a high-performance FastAPI backend for real-time processing and a responsive React frontend for seamless visualization.',
+    category: 'nlp',
+    technologies: ['FastAPI', 'React', 'Groq API', 'Markmap.js', 'TailwindCSS', 'TypeScript'],
+    impact: 'Real-time knowledge visualization',
+    links: [
+      { type: 'github', url: 'https://github.com/XLR8MDA/mindmap-frontend', label: 'Frontend' },
+      { type: 'github', url: 'https://github.com/XLR8MDA/mindmap-backend', label: 'Backend' },
+      { type: 'demo', url: 'https://mindmap-fe-v2.xlr8090.workers.dev/', label: 'Live Demo' }
+    ],
+    challenges: [
+      'Optimizing AI prompts for consistent hierarchical Markdown output',
+      'Implementing real-time rendering of large, complex mindmap structures',
+      'Ensuring cross-platform responsiveness for interactive SVG-based visualizations'
+    ],
+    featured: true
+  },
+  {
     id: '1',
     slug: 'conversational-ai-hotel',
     title: 'Multi-Agent Hotel Booking System',
@@ -47,18 +68,6 @@ export const projects: Project[] = [
     featured: true
   },
   {
-    id: '4',
-    slug: 'workforce-management',
-    title: 'Automated Rostering System',
-    shortDescription: 'Algorithm reducing manual scheduling time by 40%.',
-    fullDescription: 'Built an automated shift planning algorithm that optimized staff allocation, reducing manual scheduling time by 40%. Integrated Twilio SMS API to trigger instant roster updates and shift alerts for 50+ employees.',
-    category: 'mlops',
-    technologies: ['FastAPI', 'Pandas', 'Twilio API'],
-    impact: '40% time saved',
-    links: [],
-    featured: false
-  },
-  {
     id: '5',
     slug: 'gitivity-github-tracker',
     title: 'Gitivity - GitHub Productivity Tracker',
@@ -79,26 +88,17 @@ export const projects: Project[] = [
     featured: true
   },
   {
-    id: '6',
-    slug: 'mindmap-ai',
-    title: 'Mindmap AI - Intelligent Knowledge Visualizer',
-    shortDescription: 'AI-powered tool transforming complex queries into interactive, hierarchical mindmaps.',
-    fullDescription: 'Engineered a full-stack application that leverages the Groq API to transform unstructured user queries into structured Markdown, which is then dynamically rendered into interactive mindmaps using Markmap.js. The system features a high-performance FastAPI backend for real-time processing and a responsive React frontend for seamless visualization.',
-    category: 'nlp',
-    technologies: ['FastAPI', 'React', 'Groq API', 'Markmap.js', 'TailwindCSS', 'TypeScript'],
-    impact: 'Real-time knowledge visualization',
-    links: [
-      { type: 'github', url: 'https://github.com/XLR8MDA/mindmap-frontend', label: 'Frontend' },
-      { type: 'github', url: 'https://github.com/XLR8MDA/mindmap-backend', label: 'Backend' },
-      { type: 'demo', url: 'https://mindmap-fe-v2.xlr8090.workers.dev/', label: 'Live Demo' }
-    ],
-    challenges: [
-      'Optimizing AI prompts for consistent hierarchical Markdown output',
-      'Implementing real-time rendering of large, complex mindmap structures',
-      'Ensuring cross-platform responsiveness for interactive SVG-based visualizations'
-    ],
-    featured: true
-  }
+    id: '4',
+    slug: 'workforce-management',
+    title: 'Automated Rostering System',
+    shortDescription: 'Algorithm reducing manual scheduling time by 40%.',
+    fullDescription: 'Built an automated shift planning algorithm that optimized staff allocation, reducing manual scheduling time by 40%. Integrated Twilio SMS API to trigger instant roster updates and shift alerts for 50+ employees.',
+    category: 'mlops',
+    technologies: ['FastAPI', 'Pandas', 'Twilio API'],
+    impact: '40% time saved',
+    links: [],
+    featured: false
+  },
 ];
 
 // Helper function to get project by slug
