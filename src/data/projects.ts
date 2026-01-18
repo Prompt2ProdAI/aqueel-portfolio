@@ -43,15 +43,20 @@ export const projects: Project[] = [
   },
   {
     id: '2',
-    slug: 'agentmax-voicebot',
-    title: 'AgentMax - Voice Interviewer',
-    shortDescription: 'AI Voicebot conducting 100+ daily candidate interviews.',
-    fullDescription: 'Built an AI-powered voicebot that handled 100+ candidate interviews daily, leveraging Twilio, Ultravox for real-time streaming and speech-to-speech conversion. Engineered dynamic, prompt-driven Q&A flows tailored to candidate profiles using configurable LLM prompts.',
+    slug: 'agentmax-interviewer',
+    title: 'AgentMAX - AI-Powered HR Interviewer',
+    shortDescription: 'AI Voicebot conducting 100+ daily candidate interviews using Gemini 2.0.',
+    fullDescription: 'Built an AI-powered voicebot that handles 100+ candidate interviews daily, leveraging Gemini 2.0 Multimodal Live API for real-time streaming. Engineered a structured 10-question HR protocol with a futuristic "Google-inspired" interface, featuring animated HUDs, real-time audio visualization, and automated session conclusion.',
     category: 'voice-ai',
-    technologies: ['Ultravox', 'Twilio', 'MongoDB', 'Python'],
+    technologies: ['Gemini 2.0 API', 'React', 'TypeScript', 'WebSockets', 'SCSS', 'Vega Lite'],
     impact: '100+ interviews daily',
     links: [
-      { type: 'demo', url: '#', label: 'Live Demo' }
+      { type: 'demo', url: 'https://agentmax-interviewer.pages.dev/', label: 'Live Demo' }
+    ],
+    challenges: [
+      'Orchestrating real-time multimodal streaming for low-latency feedback',
+      'Implementing a strict state-managed interview protocol with automated tool-based conclusion',
+      'Designing a high-fidelity futuristic UI with real-time audio pulse visualization'
     ],
     featured: true
   },

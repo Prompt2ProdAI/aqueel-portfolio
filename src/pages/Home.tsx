@@ -32,7 +32,7 @@ export default function Home() {
     {
       icon: Mic,
       title: 'Voice AI Systems',
-      description: '100+ daily voice interactions with real-time streaming'
+      description: '100+ daily voice interactions with Gemini 2.0 real-time streaming'
     },
     {
       icon: Bot,

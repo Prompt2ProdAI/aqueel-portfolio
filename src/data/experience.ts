@@ -29,13 +29,13 @@ export const workExperience: WorkExperience[] = [
     period: 'August 2023 - September 2025',
     projects: [
       {
-        name: 'AgentMax - Voice-Based Conversational AI System',
+        name: 'AgentMAX - AI-Powered HR Interviewer',
         highlight: '100+ calls daily',
         bullets: [
-          'Built an AI-powered voicebot that handled 100+ candidate interviews daily, leveraging Twilio, Ultravox for real-time streaming and speech-to-speech conversion.',
-          'Engineered dynamic, prompt-driven Q&A flows tailored to candidate profiles using configurable LLM prompts.',
-          'Automated call state tracking, transcription, and outcome logging round the clock, supporting scalable, cloud-based hiring workflows.',
-          'Enabled persistent conversation storage with TinyDB and MongoDB, facilitating post-call analytics, review, and hiring decision support.'
+          'Built an AI-powered voicebot that handles 100+ candidate interviews daily, leveraging Gemini 2.0 Multimodal Live API for real-time streaming and high-fidelity interaction.',
+          'Architected a structured 10-question HR protocol with contextual adaptation and automated tool-based session conclusion.',
+          'Designed a futuristic "Google-inspired" interface featuring animated HUDs and real-time audio visualization, leveraging WebSockets for low-latency streaming.',
+          'Automated the end-to-end interview lifecycle, ensuring browser permissions and clean data handling for hundreds of concurrent sessions.'
         ]
       },
       {
