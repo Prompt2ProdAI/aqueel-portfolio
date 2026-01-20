@@ -30,24 +30,23 @@ This is a personal portfolio website built with React, Vite, TypeScript, and Tai
    bun dev
    ```
 
-## Deployment on Cloudflare Pages
+## Deployment on GitHub Pages
 
-This project is configured for deployment on Cloudflare Pages.
+This project is configured for automatic deployment to GitHub Pages via GitHub Actions.
 
-### Automatic Deployment (Recommended)
+### Automatic Deployment
 
-1. Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com/).
-2. Go to **Workers & Pages** > **Create Application** > **Pages** > **Connect to Git**.
-3. Select your repository.
-4. Configure the build settings:
-   - **Framework Preset**: Vite
-   - **Build command**: `npm run build` (or `bun run build`)
-   - **Build output directory**: `dist`
-5. Click **Save and Deploy**.
+Every time you push to the `main` branch, a GitHub Action will automatically:
+1. Build the project
+2. Deploy the `dist` folder to GitHub Pages
 
-### Routing
+The project is configured with a base path of `/self-portfolio/`, so it will be available at `https://<YOUR_USERNAME>.github.io/self-portfolio/`.
 
-A `public/_redirects` file is included to handle client-side routing in Cloudflare Pages.
+### Manual Configuration
+
+1. Go to your repository on GitHub.
+2. Navigate to **Settings** > **Pages**.
+3. Under **Build and deployment** > **Source**, ensure **GitHub Actions** is selected.
 
 ## Tech Stack
 
