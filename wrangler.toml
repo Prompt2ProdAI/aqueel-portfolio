@@ -1,6 +1,0 @@
-name = "aqueel-portfolio"
-pages_build_output_dir = "dist"
-compatibility_date = "2024-11-01"
-
-[build]
-command = "npm run build"
