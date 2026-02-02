@@ -55,6 +55,14 @@ export function Header() {
             )}
           >
 
+            <img
+              src="/logo.svg"
+              alt="Logo"
+              className={cn(
+                "size-8 transition-all duration-300",
+                isTransparent ? "invert-0" : "invert dark:invert-0"
+              )}
+            />
             <motion.span
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}

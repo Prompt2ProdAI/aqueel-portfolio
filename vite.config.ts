@@ -4,16 +4,16 @@ import path from "path";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? "/self-portfolio/" : "/",
+export default defineConfig({
+  base: "/",
   server: {
     host: "::",
     port: 8080,
   },
-  plugins: [tailwindcss(), react()].filter(Boolean),
+  plugins: [tailwindcss(), react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-}));
+});
